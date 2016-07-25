@@ -18,13 +18,6 @@ module.exports = {
           query: {
             presets: ['es2015']
           }
-        },
-
-        // debug=true will wrap RamdaJs functions in error handlers with file name, line number and char location
-        {
-          test: /\.js$/,
-          exclude:/(node_modules|bower_components)/,
-          loader: 'ramda-loader?debug=true'
         }
       ]
     }

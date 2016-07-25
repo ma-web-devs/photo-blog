@@ -3,14 +3,14 @@
  */
 
 // Load our API keys
-import keys from 'api-key.js';
+import keys from 'api-key';
 
 console.log(keys);
 
-var firebase = require("firebase/app");
-    require("firebase/auth");
-    require("firebase/database");
-    require("firebase/storage");
+//var firebase = require("firebase/app");
+    //require("firebase/auth");
+    //require("firebase/database");
+    //require("firebase/storage");
 
 var config = {
     apiKey: keys.firebase_key,
