@@ -18,9 +18,12 @@
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-storage.js"></script>
    
     <script>
+      // Load our API keys
+      javascript var keys = require('/app/js/api-key.js');
+    
       // Initialize Firebase
       var config = {
-        apiKey: "",
+        apiKey: keys.firebase_key,
         authDomain: "photoblog-11d60.firebaseapp.com",
         databaseURL: "https://photoblog-11d60.firebaseio.com",
         storageBucket: "photoblog-11d60.appspot.com",
