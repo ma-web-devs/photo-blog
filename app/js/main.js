@@ -3,8 +3,10 @@
  */
 
 // Load our API keys
-javascript var keys = require('api-key.js');
- 
+import keys from 'api-key.js';
+
+console.log(keys);
+
 var firebase = require("firebase/app");
     require("firebase/auth");
     require("firebase/database");
