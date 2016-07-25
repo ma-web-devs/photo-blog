@@ -18,9 +18,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-const firebaseUploader = new fileUploader();
-
-firebaseUploader.setupFileInputChangeEvent(savePost);
+fileUploader.setupFileInputChangeEvent(savePost);
 
 function savePost(imageRef, title, body) {
   // A post entry.

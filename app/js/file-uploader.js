@@ -8,29 +8,22 @@ export default class FireBaseStorage {
     this.files = [];
   }
 
-  getStorageReference() {
+  static getStorageReference() {
     const storage = firebase.storage().ref();
   }
 
-  getFileReference(fullFilePath) {
-    return this.getStorageReference().child(fullFilePath);
+  static getFileReference(fullFilePath) {
+    return FireBaseStorage.getStorageReference().child(fullFilePath);
   }
 
   // This is just static version of above
-  static getRef() {
+  static getStorageReference() {
     return firebase.storage().ref();
   }
 
-
-  getFileInfo(fullFilePath) {
-    const file = this.getFileReference(fullFilePath);
-    return (file && is.isObject(file)) ? file : null;
-  }
-
   static putFile(file, callback) {
-    console.log(file);
 
-    let uploadTask = FireBaseStorage.getRef().child(file.name).put(file);
+    let uploadTask = FireBaseStorage.getStorageReference().child(file.name).put(file);
 
     uploadTask.on('state_changed', function(snapshot){
       // Observe state change events such as progress, pause, and resume
@@ -49,21 +42,14 @@ export default class FireBaseStorage {
 
   static getFileFromInput(evt, callback) {
 
-    let preview = document.querySelector('img');
     let file = document.querySelector('input[type=file]').files[0];
-    let reader = new FileReader();
-
-    reader.addEventListener("load", function () {
-      preview.src = reader.result;
-
-    }, false);
 
     if (file) {
       FireBaseStorage.putFile(file, callback);
     }
   }
 
-  setupFileInputChangeEvent(callback) {
+  static setupFileInputChangeEvent(callback) {
     const fileInput = document.querySelector('input[type=file]');
     fileInput.onchange = function (evt) {
       FireBaseStorage.getFileFromInput(evt, callback);
