@@ -1,5 +1,4 @@
 var path = require("path");
-require("foundation-sites-loader");
 
 module.exports = {
   entry: {
