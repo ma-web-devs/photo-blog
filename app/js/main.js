@@ -3,7 +3,7 @@
  */
 
 // Load our API keys
-import keys from 'api-key';
+import keys from './api-key';
 
 console.log(keys);
 
