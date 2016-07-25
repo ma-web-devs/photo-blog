@@ -1,6 +1,7 @@
-import is from 'is';
+import is from './utils';
 
-class FireBaseStorage {
+
+export default class FireBaseStorage {
   constructor(config) {
     // Not sure if this will need config.
     this.config = config || {};
@@ -18,19 +19,27 @@ class FireBaseStorage {
     const file = this.getFileReference(fullFilePath);
     return (file && is.isObject(file)) ? file : null;
   }
-}
+  
+  getFileFromInput() {
 
+    let preview = document.querySelector('img');
+    let file = document.querySelector('input[type=file]').files[0];
+    let reader = new FileReader();
 
-function previewFile() {
-  var preview = document.querySelector('img');
-  var file = document.querySelector('input[type=file]').files[0];
-  var reader = new FileReader();
+    reader.addEventListener("load", function () {
+      preview.src = reader.result;
+    }, false);
 
-  reader.addEventListener("load", function () {
-    preview.src = reader.result;
-  }, false);
+    if (file) {
+      reader.readAsDataURL(file);
+      console.log(file);
+    }
+  }
 
-  if (file) {
-    reader.readAsDataURL(file);
+  setupFileInputChangeEvent(id) {
+    const fileInput = document.querySelector('input[type=file]');
+    fileInput.onchange = function (evt) {
+      this.getFileFromInput(evt);
+    }
   }
 }
