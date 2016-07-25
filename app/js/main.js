@@ -6,11 +6,6 @@
 import keys from './api-key';
 import fileUploader from './file-uploader';
 
-//var firebase = require("firebase/app");
-//require("firebase/auth");
-//require("firebase/database");
-//require("firebase/storage");
-
 var config = {
   apiKey: keys.firebase_key,
   authDomain: "photoblog-11d60.firebaseapp.com",
@@ -29,9 +24,12 @@ firebaseUploader.setupFileInputChangeEvent(savePost);
 
 function savePost(imageRef, title, body) {
   // A post entry.
+  var title = document.getElementById('blog-title').value;
+  var body = document.getElementById('blog').value;
+  
   var postData = {
-    body: "Test body",
-    title: "Dummy title",
+    body: body,
+    title: title,
     imageRef: imageRef
   };
 
@@ -43,7 +41,7 @@ function savePost(imageRef, title, body) {
   updates['/posts/' + newPostKey] = postData;
   
   var container = document.getElementById('blog-container');
-  container.innerHTML = updates;
+  container.innerHTML = newPostKey;
 
   return firebase.database().ref().update(updates);
 }
