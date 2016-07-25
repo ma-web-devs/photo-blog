@@ -20,7 +20,7 @@ var database = firebase.database();
 
 fileUploader.setupFileInputChangeEvent(savePost);
 
-function savePost(imageRef, title, body) {
+function savePost(imageRef) {
   // A post entry.
   var title = document.getElementById('blog-title').value;
   var body = document.getElementById('blog').value;
