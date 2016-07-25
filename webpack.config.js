@@ -12,17 +12,12 @@ module.exports = {
   },
     module: {
       loaders: [
-
-        // **IMPORTANT** This is needed so that each foundation js file required by
-        // foundation-webpack has access to the jQuery object
-        { test: /foundation\/js\//, loader: 'imports?jQuery=jquery' },
         {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
           loader: 'babel', // 'babel-loader' is also a legal name to reference
           query: {
-            presets: ['es2015'],
-            plugins: ['lodash']
+            presets: ['es2015']
           }
         },
 
