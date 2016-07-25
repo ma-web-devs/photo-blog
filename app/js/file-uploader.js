@@ -20,14 +20,17 @@ export default class FireBaseStorage {
     return (file && is.isObject(file)) ? file : null;
   }
   
-  static getFileFromInput() {
+  static getFileFromInput(evt, callback) {
 
     let preview = document.querySelector('img');
     let file = document.querySelector('input[type=file]').files[0];
     let reader = new FileReader();
 
+    
+    
     reader.addEventListener("load", function () {
       preview.src = reader.result;
+      callback(reader);
     }, false);
 
     if (file) {
@@ -36,10 +39,11 @@ export default class FireBaseStorage {
     }
   }
 
-  setupFileInputChangeEvent(id) {
+  setupFileInputChangeEvent(callback) {
     const fileInput = document.querySelector('input[type=file]');
     fileInput.onchange = function (evt) {
-      FireBaseStorage.getFileFromInput(evt);
+      FireBaseStorage.getFileFromInput(evt, callback);
+      
     }
   }
 }
