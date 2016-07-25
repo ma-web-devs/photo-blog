@@ -20,7 +20,7 @@ export default class FireBaseStorage {
     return (file && is.isObject(file)) ? file : null;
   }
   
-  getFileFromInput() {
+  static getFileFromInput() {
 
     let preview = document.querySelector('img');
     let file = document.querySelector('input[type=file]').files[0];
@@ -39,7 +39,7 @@ export default class FireBaseStorage {
   setupFileInputChangeEvent(id) {
     const fileInput = document.querySelector('input[type=file]');
     fileInput.onchange = function (evt) {
-      this.getFileFromInput(evt);
+      FireBaseStorage.getFileFromInput(evt);
     }
   }
 }
